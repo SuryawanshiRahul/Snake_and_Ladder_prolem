@@ -8,9 +8,9 @@ public class Snake_and_ladder {
     //Position of Player
     int position = 0;
     //Define Constant For Options
-    final int NO_PLAY = 0;
-    final int LADDER = 1;
-    final int SNAKE = 2;
+    final int NO_PLAY = 1;
+    final int LADDER = 2;
+    final int SNAKE = 3;
 
     // Showing The Player Current Position
     public void showPosition(){
@@ -20,12 +20,28 @@ public class Snake_and_ladder {
     // Rolling The Die to get  position
     public void  rollsDie(){
         //UC-2-Rolls_Die_1_To_6_Using_Random_Function
-       int die =random.nextInt(6)+1;
+       int die = random.nextInt(6)+1;
         System.out.println("Die No is :"+die);
+        // UC-3 Checking For To Play
+        int option = random.nextInt(3)+1;
+        System.out.println("Option Is :"+option);
+        switch (option){
+            case NO_PLAY:
+                System.out.println("NO Play Arrived. Stay on Same Position");
+            break;
+            case LADDER:
+                System.out.println("HURRAY !!! You get Ladder");
+                position = position * die;
+            break;
+            case SNAKE:
+                System.out.println("OOPS !!! You get Snake");
+                position = position - die;
+            break;
+        }
     }
     public static void main(String[] args) {
-        Snake_and_ladder snake_and_ladder = new Snake_and_ladder();
-        snake_and_ladder.showPosition();
-        snake_and_ladder.rollsDie();
+        Snake_and_ladder player1 = new Snake_and_ladder();
+        player1.showPosition();
+        player1.rollsDie();
     }
 }
