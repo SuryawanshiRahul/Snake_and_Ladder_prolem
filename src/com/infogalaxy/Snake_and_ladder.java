@@ -18,25 +18,33 @@ public class Snake_and_ladder {
         System.out.println("Player Position is :"+position);
     }
     // Rolling The Die to get  position
-    public void  rollsDie(){
-        //UC-2-Rolls_Die_1_To_6_Using_Random_Function
-       int die = random.nextInt(6)+1;
-        System.out.println("Die No is :"+die);
+    public void  rollsDie() {
+//UC-4  Checking For Player Winning Position 100
+        while (position <= 100){
+            //UC-2-Rolls_Die_1_To_6_Using_Random_Function
+            int die = random.nextInt(6) + 1;
+        System.out.println("Die No is :" + die);
         // UC-3 Checking For To Play
-        int option = random.nextInt(3)+1;
-        System.out.println("Option Is :"+option);
-        switch (option){
+        int option = random.nextInt(3) + 1;
+        System.out.println("Option Is :" + option);
+        switch (option) {
             case NO_PLAY:
                 System.out.println("NO Play Arrived. Stay on Same Position");
-            break;
+                System.out.println("New Position :" + position);
+                break;
             case LADDER:
                 System.out.println("HURRAY !!! You get Ladder");
-                position = position * die;
-            break;
+                position = position + die;
+                System.out.println("New Position :" + position);
+                break;
             case SNAKE:
                 System.out.println("OOPS !!! You get Snake");
                 position = position - die;
-            break;
+                if (position < 0)
+                    position = 0;
+                System.out.println("New Position :" + position);
+                break;
+        }
         }
     }
     public static void main(String[] args) {
