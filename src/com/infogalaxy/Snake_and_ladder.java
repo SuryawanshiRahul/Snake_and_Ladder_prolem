@@ -20,7 +20,7 @@ public class Snake_and_ladder {
     // Rolling The Die to get  position
     public void  rollsDie() {
 //UC-4  Checking For Player Winning Position 100
-        while (position <= 100){
+        while (position != 100){
             //UC-2-Rolls_Die_1_To_6_Using_Random_Function
             int die = random.nextInt(6) + 1;
         System.out.println("Die No is :" + die);
@@ -35,16 +35,20 @@ public class Snake_and_ladder {
             case LADDER:
                 System.out.println("HURRAY !!! You get Ladder");
                 position = position + die;
-                System.out.println("New Position :" + position);
+                if(position >100){
+                    //UC-5 The Player Position Go Above 100,Stay In Same previous Position
+                    System.out.println("******Player Out Of Board.******");
+                    position = position -die;
+                }
                 break;
             case SNAKE:
                 System.out.println("OOPS !!! You get Snake");
                 position = position - die;
                 if (position < 0)
                     position = 0;
-                System.out.println("New Position :" + position);
                 break;
         }
+        showPosition();
         }
     }
     public static void main(String[] args) {
