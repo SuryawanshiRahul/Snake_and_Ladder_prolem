@@ -7,6 +7,7 @@ public class Snake_and_ladder {
 
     //Position of Player
     int position = 0;
+    int countRoll = 0;
     //Define Constant For Options
     final int NO_PLAY = 1;
     final int LADDER = 2;
@@ -21,6 +22,7 @@ public class Snake_and_ladder {
     public void  rollsDie() {
 //UC-4  Checking For Player Winning Position 100
         while (position != 100){
+            countRoll++;
             //UC-2-Rolls_Die_1_To_6_Using_Random_Function
             int die = random.nextInt(6) + 1;
         System.out.println("Die No is :" + die);
@@ -51,9 +53,14 @@ public class Snake_and_ladder {
         showPosition();
         }
     }
+    //UC-6-Number Of Time The  die Rolled After Game
+    public  void printCountRoll(){
+        System.out.println("Total Number of Play Roll for Die :"+countRoll);
+    }
     public static void main(String[] args) {
         Snake_and_ladder player1 = new Snake_and_ladder();
         player1.showPosition();
         player1.rollsDie();
+        player1.printCountRoll();
     }
 }
